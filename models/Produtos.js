@@ -6,12 +6,6 @@ const Produto = db.sequelize.define("produtos", {
   descricao: { type: db.Sequelize.TEXT, allowNull: false }
 })
 
-Produto.create({
-  nome: "Arroz",
-  preco: 10.00,
-  descricao: "Arroz Camil"
-})
-
 Produto.sync({force: false})
 
 module.exports = Produto
