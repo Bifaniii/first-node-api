@@ -2,6 +2,126 @@ const express = require('express')
 const router = express.Router()
 const Produtos = require('../models/Produtos')
 
+/**
+ * @swagger
+ * tags:
+ *   name: Produtos
+ *   description: Endpoints para gerenciamento de produtos
+ */
+
+/**
+ * @swagger
+ * /produtos:
+ *   get:
+ *     summary: Lista todos os produtos
+ *     tags: [Produtos]
+ *     responses:
+ *       200:
+ *         description: Lista de produtos
+ */
+
+/**
+ * @swagger
+ * /produtos/{id}:
+ *   get:
+ *     summary: Busca um produto pelo ID
+ *     tags: [Produtos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID do produto
+ *     responses:
+ *       200:
+ *         description: Produto encontrado
+ *       404:
+ *         description: Produto não encontrado
+ */
+
+/**
+ * @swagger
+ * /produtos:
+ *   post:
+ *     summary: Cria um novo produto
+ *     tags: [Produtos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nome:
+ *                 type: string
+ *               preco:
+ *                 type: number
+ *               descricao:
+ *                 type: string
+ *             example:
+ *               nome: "Notebook"
+ *               preco: 3500.00
+ *               descricao: "Notebook Dell Inspiron"
+ *     responses:
+ *       201:
+ *         description: Produto criado com sucesso
+ *       500:
+ *         description: Erro ao cadastrar produto
+ */
+
+/**
+ * @swagger
+ * /produtos/{id}:
+ *   put:
+ *     summary: Atualiza um produto pelo ID
+ *     tags: [Produtos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nome:
+ *                 type: string
+ *               preco:
+ *                 type: number
+ *               descricao:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Produto atualizado com sucesso
+ *       404:
+ *         description: Produto não encontrado
+ */
+
+/**
+ * @swagger
+ * /produtos/{id}:
+ *   delete:
+ *     summary: Deleta um produto pelo ID
+ *     tags: [Produtos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Produto deletado com sucesso
+ *       404:
+ *         description: Produto não encontrado
+ */
+
+
 // GET Listar Todos produtos
 router.get("/", async (req, res) => {
   try {
